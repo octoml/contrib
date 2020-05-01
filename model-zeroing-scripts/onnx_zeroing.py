@@ -44,9 +44,6 @@ def main(input_model_name: str):
     rewrite_names(model.graph.node)
 
     for node in model.graph.node:
-        # TODO: do we need to rewrite node.attribute with TensorData as well?
-        # if len(node.attribute) > 0:
-        #     print(node.attribute)
         for j, name in enumerate(node.input):
             if name in rename_mapping:
                 node.input[j] = rename_mapping[name]
