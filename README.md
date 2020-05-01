@@ -1,2 +1,2 @@
-# contrib
-Helpful scripts, utilities, etc.
+# Contrib (public)
+OctoML helpful public scripts, utilities, etc.
