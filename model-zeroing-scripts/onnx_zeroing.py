@@ -23,9 +23,12 @@ def main(input_model_name: str):
         numpy_array = numpy_helper.to_array(tensor_proto)
         rand_name = ''.join(
             random.choices(string.ascii_uppercase + string.digits, k=10))
-        new_data.append(
-            numpy_helper.from_array(np.zeros_like(numpy_array),
-                                    name=rand_name))
+        if numpy_array.dtype == np.float32:  # Weight values
+            new_tensor = np.zeros_like(numpy_array)
+        else:  # Data is potentially useful like reshape dimensions and we only rename
+            print(f"DATA OF: {numpy_array}")
+            new_tensor = numpy_array
+        new_data.append(numpy_helper.from_array(new_tensor, name=rand_name))
         rename_mapping[tensor_proto.name] = rand_name
 
     # Replace old data with new data
