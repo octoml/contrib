@@ -26,7 +26,6 @@ def main(input_model_name: str):
         if numpy_array.dtype == np.float32:  # Weight values
             new_tensor = np.zeros_like(numpy_array)
         else:  # Data is potentially useful like reshape dimensions and we only rename
-            print(f"DATA OF: {numpy_array}")
             new_tensor = numpy_array
         new_data.append(numpy_helper.from_array(new_tensor, name=rand_name))
         rename_mapping[tensor_proto.name] = rand_name
